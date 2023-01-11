@@ -41,16 +41,8 @@ character_to_x = 0
 # 이동 속도
 character_speed = 5
 
-# 적 캐릭터
-enemy = pygame.image.load(os.path.join(image_path, "enemy.png"))
-enemy_size = enemy.get_rect().size
-enemy_width = enemy_size[0]
-enemy_height = enemy_size[1]
-enemy_x_pos = screen_width
-enemy_y_pos = 0 + enemy_height
-
 # 무기 만들기
-weapon = pygame.image.load(os.path.join(image_path, "weapon.png"))
+weapon = pygame.image.load(os.path.join(image_path, "weapon_R.png"))
 weapon_size = weapon.get_rect().size
 weapon_width = weapon_size[0]
 
@@ -59,12 +51,26 @@ weapons = []
 
 # 무기 이동 속도
 weapon_speed = 10
+# 적 만들기 (적 종류에 따라 따로 처리)
+enemy_L_images = [
+    pygame.image.load(os.path.join(image_path, "enemy1_L.png")),
+    pygame.image.load(os.path.join(image_path, "enemy2_L.png")),
+    pygame.image.load(os.path.join(image_path, "enemy3_L.png")),
+]
+enemy_R_images = [
+    pygame.image.load(os.path.join(image_path, "enemy1_R.png")),
+    pygame.image.load(os.path.join(image_path, "enemy2_R.png")),
+    pygame.image.load(os.path.join(image_path, "enemy3_R.png")),
+]
 
+# 적에 따른 스피드
+enemy_speed_x = [-18, -12, -5] # 인덱스 0,1,2에 해당하는 값
 
+enemy_L = [{
+    "pos_x": 50,
+    "pos_y": 50
+}]
 
-# 이동할 좌표
-to_x = 0
-to_y = 0
 
 # 이벤트 루프
 running = True  # 게임이 진행중인가?
